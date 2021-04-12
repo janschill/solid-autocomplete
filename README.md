@@ -37,3 +37,13 @@ HTML autocomplete form inputs:
 3. Put data into form inputs
     - Check for already filled in data, and ask for what to keep
     - Have checkbox to remember data? Save data in pod and use next time
+
+## Indico Example Fields
+
+- Title
+- First Name
+- Last Name
+- Email Address
+- Affiliation
+- Institutional Address
+- Country

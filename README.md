@@ -16,8 +16,6 @@ Additionally it needs
 2. Be descendants of a <form> element
 3. The form to have a submit button
 
-https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
-
 ### Valid Fields
 
 HTML autocomplete form inputs:
@@ -25,8 +23,9 @@ HTML autocomplete form inputs:
 | ID | Description |
 | -  | -           |
 | name | “The field expects the value to be a person's full name. Using "name" rather than breaking the name down into its components is generally preferred” |
-| lname | Last name |
 | email | Email address |
+
+*For a complete list see link [1].*
 
 ## Features
 
@@ -47,3 +46,8 @@ HTML autocomplete form inputs:
 - Affiliation
 - Institutional Address
 - Country
+
+## Useful Links
+
+- [1] https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
+- [2] https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill

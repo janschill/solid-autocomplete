@@ -1,2 +1,3 @@
 # solid-form-fill
-Fill out forms using data from your pod.
+
+This module allows an HTML form to be populated with data from your Solid pod.

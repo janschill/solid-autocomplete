@@ -27,3 +27,13 @@ HTML autocomplete form inputs:
 | name | “The field expects the value to be a person's full name. Using "name" rather than breaking the name down into its components is generally preferred” |
 | lname | Last name |
 | email | Email address |
+
+## Features
+
+1. Authenticate to Solid Pod
+2. Fetch data from pod
+    - From WebID profile document
+    - From other resources?
+3. Put data into form inputs
+    - Check for already filled in data, and ask for what to keep
+    - Have checkbox to remember data? Save data in pod and use next time

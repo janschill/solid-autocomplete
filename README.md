@@ -25,7 +25,7 @@ HTML autocomplete form inputs:
 | name | “The field expects the value to be a person's full name. Using "name" rather than breaking the name down into its components is generally preferred” |
 | email | Email address |
 
-*For a complete list see link [1].*
+*For a complete list see link [[2]](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill).*
 
 ## Features
 

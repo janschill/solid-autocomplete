@@ -1,0 +1,66 @@
+{
+  "name": "solid-autocomplete",
+  "version": "0.1.0",
+  "description": "This module allows an HTML form to be populated with data from your Solid pod.",
+  "main": "dist/solid-autocomplete.js",
+  "module": "dist/solid-autocomplete.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "webpack --config webpack.prod.js",
+    "watch": "webpack --watch",
+    "start": "webpack serve --open --config webpack.dev.js"
+  },
+  "keywords": [
+    "solid",
+    "autocomplete",
+    "indico"
+  ],
+  "author": "Jan Schill",
+  "license": "MIT",
+  "dependencies": {
+    "@inrupt/solid-client": "^1.5.0",
+    "@inrupt/solid-client-authn-browser": "^1.7.2",
+    "@inrupt/vocab-common-rdf": "^0.7.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-export-default-from": "^7.0.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^23.4.2",
+    "babel-loader": "^8.0.0",
+    "css-loader": "^5.0.2",
+    "eslint": "^7.20.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "regenerator-runtime": "^0.13.7",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.22.0",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.7.3"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "bower_components",
+      "shared"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/test/__mocks__/styleMock.js"
+    }
+  }
+}

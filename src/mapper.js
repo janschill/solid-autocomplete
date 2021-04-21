@@ -1,5 +1,7 @@
 export default class Mapper {
   constructor (params) {
+    this.inputLabelTuples = params.inputLabelTuples
+    this.fillData = params.fillData
     this.initDictionary()
   }
 
@@ -55,5 +57,32 @@ export default class Mapper {
 
     const textContentSplit = textContent.split(' ')
     return this.checkValuesInDictionary(textContentSplit)
+  }
+
+  map () {
+    const elements = []
+    this.inputLabelTuples.forEach(inputLabelTuple => {
+      const $input = inputLabelTuple.input
+      const $label = inputLabelTuple.label
+
+      const fillKeyFromAutocompleteAttribute = this.fromAutocompleteAttribute($input)
+      if (fillKeyFromAutocompleteAttribute) {
+        elements.push({ input: $input, predicate: fillKeyFromAutocompleteAttribute })
+        return
+      }
+
+      const fillKeyFromId = this.fromId($input)
+      if (fillKeyFromId) {
+        elements.push({ input: $input, predicate: fillKeyFromId })
+        return
+      }
+
+      const fillKeyFromLabelText = this.fromLabelText($label)
+      if (fillKeyFromLabelText) {
+        elements.push({ input: $input, predicate: fillKeyFromLabelText })
+      }
+    })
+
+    return elements
   }
 }

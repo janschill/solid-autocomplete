@@ -1,3 +1,4 @@
+import './assets/css/styles.css'
 import Filler from './filler'
 import Mapper from './mapper'
 import Picker from './picker'

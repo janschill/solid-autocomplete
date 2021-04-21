@@ -28,17 +28,6 @@ export default class SolidAutocomplete {
       // fill in data to inputs
     })
   }
-
-  // filler ($element, inputId) {
-  //   let fillValue = webIdProfileDocument[inputId]
-  //   if (!fillValue) {
-  //     const fillKey = dictionary[inputId]
-  //     fillValue = webIdProfileDocument[fillKey]
-  //   }
-  //   if (fillValue) {
-  //     $element.value = fillValue
-  //   }
-  // }
 }
 
 if (process.env.NODE_ENV !== 'production') {

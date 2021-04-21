@@ -1,0 +1,83 @@
+.sa-modal__text {
+  display: inline;
+}
+
+.sc-modal__button {
+  border: none;
+  vertical-align: middle;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.sc-modal__button--accept {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  transform: rotate(45deg);
+}
+
+.checkmark_circle {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background-color: rgb(0, 167, 0);
+  border-radius: 11px;
+  left: 0;
+  top: 0;
+}
+
+.checkmark:hover .checkmark_circle {
+  transition: all 250ms ease;
+  background-color: rgb(0, 122, 0);
+}
+
+.checkmark_stem {
+  position: absolute;
+  width: 3px;
+  height: 9px;
+  background-color: #fff;
+  left: 11px;
+  top: 6px;
+}
+
+.checkmark_kick {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background-color: #fff;
+  left: 8px;
+  top: 12px;
+}
+
+.sc-modal__button--decline {
+  width: 22px;
+  height: 22px;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.sc-modal__button--decline:hover {
+  transition: all 250ms ease;
+  background-color: rgb(163, 4, 4);
+}
+
+.close {
+  height: 10px;
+  width: 3px;
+  margin-left: 2px;
+  background-color: white;
+  transform: rotate(45deg);
+  z-index: 1;
+  margin-top: 5px;
+  display: inline-block;
+}
+
+.close__inner {
+  height: 10px;
+  width: 3px;
+  background-color: white;
+  transform: rotate(90deg);
+  z-index: 2;
+  margin-bottom: 5px;
+  display: inline-block;
+}

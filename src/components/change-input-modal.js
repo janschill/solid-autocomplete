@@ -21,7 +21,7 @@ export default class ChangeInputModal {
       const $button = event.target.closest('button')
       if ($button.classList.contains('sc-modal__button')) {
         event.preventDefault()
-        const action = event.target.dataset.action
+        const action = $button.dataset.action
 
         switch (action) {
           case 'accept':
@@ -47,8 +47,16 @@ export default class ChangeInputModal {
   template (text) {
     return `
       <p class="sa-modal__text">${text}</p>
-      <button class="sc-modal__button sc-modal__button--accept" data-action="accept">Y</button>
-      <button class="sc-modal__button sc-modal__button--decline" data-action="decline">X</button>
+      <button class="sc-modal__button sc-modal__button--accept checkmark" data-action="accept">
+        <span class="checkmark_circle"></span>
+        <span class="checkmark_stem"></span>
+        <span class="checkmark_kick"></span>
+      </button>
+      <button class="sc-modal__button sc-modal__button--decline" data-action="decline">
+        <span class="close">
+          <span class="close__inner"></span>
+        </span>
+      </button>
     `
   }
 }

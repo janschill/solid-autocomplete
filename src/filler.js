@@ -2,7 +2,7 @@ import ChangeInputModal from './components/change-input-modal'
 
 export default class Filler {
   constructor (params) {
-    this.baseElement = params.form
+    this.baseElement = params.baseElement
     this.tuples = params.tuples
     this.data = params.data
   }

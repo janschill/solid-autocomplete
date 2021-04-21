@@ -7,7 +7,6 @@ export default class SolidAutocomplete {
     this.autocompleteButton = params.button
     this.form = params.form
     this.picker = new Picker({ form: this.form })
-    this.filler = new Filler()
     this.autocompleteButton.addEventListener('click', async () => {
       const fillData = {
         name: 'Jan Schill',
@@ -18,9 +17,11 @@ export default class SolidAutocomplete {
         role: 'Student'
       }
       const inputLabelTuples = this.picker.pick()
-      this.mapper = new Mapper({ inputLabelTuples, fillData })
-      const mappedInputWithKeys = this.mapper.map()
-      console.log(mappedInputWithKeys)
+      this.mapper = new Mapper({ inputLabelTuples })
+      const inputsAndPredicates = this.mapper.map()
+      this.filler = new Filler({ tuples: inputsAndPredicates, data: fillData })
+      this.filler.fill()
+
       // pick form
       // find inputs to fill
       // fetch data from pod

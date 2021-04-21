@@ -1,42 +1,44 @@
-const webIdProfileDocument = {
-  name: 'Jan Schill',
-  countryName: 'Denmark',
-  postalCode: '2300',
-  region: 'Copenhagen',
-  organizationName: 'IT University of Copenhagen',
-  role: 'Student'
-}
+import Filler from './filler'
+import Mapper from './mapper'
+import Picker from './picker'
 
 export default class SolidAutocomplete {
   constructor (params) {
     this.autocompleteButton = params.button
     this.form = params.form
-
-    this.autocompleteButton.addEventListener('click', () => {
-      this.picker()
+    this.picker = new Picker({ form: this.form })
+    this.filler = new Filler()
+    this.autocompleteButton.addEventListener('click', async () => {
+      const fillData = {
+        name: 'Jan Schill',
+        countryName: 'Denmark',
+        postalCode: '2300',
+        region: 'Copenhagen',
+        organizationName: 'IT University of Copenhagen',
+        role: 'Student'
+      }
+      const inputLabelTuples = this.picker.pick()
+      this.mapper = new Mapper({ inputLabelTuples, fillData })
+      const mappedInputWithKeys = this.mapper.map()
+      console.log(mappedInputWithKeys)
+      // pick form
+      // find inputs to fill
+      // fetch data from pod
+      // map inputs to data
+      // fill in data to inputs
     })
   }
 
-  toCamelCase (word) {
-    return word.replace(/^([A-Z])|[\s-_](\w)/g, (match, p1, p2, offset) => {
-      if (p2) return p2.toUpperCase()
-      return p1.toLowerCase()
-    })
-  }
-
-  picker () {
-    const $inputs = this.form.querySelectorAll('input')
-    for (let i = 0; i < $inputs.length; i++) {
-      const $input = $inputs[i]
-      const inputId = this.toCamelCase($input.id)
-      this.filler($input, inputId)
-    }
-  }
-
-  filler ($element, inputId) {
-    const fillValue = webIdProfileDocument[inputId]
-    if (fillValue) $element.value = fillValue
-  }
+  // filler ($element, inputId) {
+  //   let fillValue = webIdProfileDocument[inputId]
+  //   if (!fillValue) {
+  //     const fillKey = dictionary[inputId]
+  //     fillValue = webIdProfileDocument[fillKey]
+  //   }
+  //   if (fillValue) {
+  //     $element.value = fillValue
+  //   }
+  // }
 }
 
 if (process.env.NODE_ENV !== 'production') {

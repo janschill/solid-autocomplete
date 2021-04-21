@@ -38,16 +38,17 @@ export default class ChangeInputModal {
   }
 
   render () {
-    // this.input.
+    const $modal = document.createElement('div')
+    $modal.classList.add('sa-modal')
+    $modal.innerHTML = this.template(this.value)
+    this.input.parentNode.appendChild($modal)
   }
 
   template (text) {
     return `
-      <div class="sa-modal">
-        <p class="sa-modal__text">${text}</p>
-        <button class="sc-modal__button sc-modal__button--accept" data-action="accept">Y</button>
-        <button class="sc-modal__button sc-modal__button--decline" data-action="decline">X</button>
-      </div>
+      <p class="sa-modal__text">${text}</p>
+      <button class="sc-modal__button sc-modal__button--accept" data-action="accept">Y</button>
+      <button class="sc-modal__button sc-modal__button--decline" data-action="decline">X</button>
     `
   }
 }

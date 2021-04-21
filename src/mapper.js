@@ -28,4 +28,32 @@ export default class Mapper {
       return p1.toLowerCase()
     })
   }
+
+  checkValuesInDictionary (values) {
+    const key = values.find(value => {
+      const vl = this.toCamelCase(value)
+      return this.dictionary[vl]
+    })
+    return this.dictionary[key]
+  }
+
+  fromAutocompleteAttribute ($input) {
+    const autocompleteValues = $input.autocomplete.split(' ')
+    return this.checkValuesInDictionary(autocompleteValues)
+  }
+
+  fromId ($input) {
+    const ids = $input.id.split(' ')
+    return this.checkValuesInDictionary(ids)
+  }
+
+  fromLabelText ($label) {
+    const textContent = $label.textContent
+    const textContentCamelCased = this.toCamelCase(textContent)
+    const hit = this.dictionary[textContentCamelCased]
+    if (hit) return hit
+
+    const textContentSplit = textContent.split(' ')
+    return this.checkValuesInDictionary(textContentSplit)
+  }
 }

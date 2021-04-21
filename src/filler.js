@@ -14,7 +14,11 @@ export default class Filler {
       const value = this.data[predicate]
       if (value) {
         const currentInputValue = $input.value
-        if (currentInputValue && currentInputValue !== '') {
+        if (
+          currentInputValue &&
+          currentInputValue !== '' &&
+          currentInputValue !== value
+        ) {
           const changeInputModal = new ChangeInputModal(
             { baseElement: this.baseElement, input: $input, value: value }
           )

@@ -19,7 +19,7 @@ export default class SolidAutocomplete {
       const inputLabelTuples = this.picker.pick()
       this.mapper = new Mapper({ inputLabelTuples })
       const inputsAndPredicates = this.mapper.map()
-      this.filler = new Filler({ tuples: inputsAndPredicates, data: fillData })
+      this.filler = new Filler({ baseElement: this.form, tuples: inputsAndPredicates, data: fillData })
       this.filler.fill()
 
       // pick form

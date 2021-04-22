@@ -3,38 +3,6 @@ export default class ChangeInputModal {
     this.baseElement = params.baseElement
     this.input = params.input
     this.value = params.value
-    this.registerActions()
-  }
-
-  acceptValueAction ($modal) {
-    $modal.remove()
-    this.input.value = this.value
-  }
-
-  declineValueAction ($modal) {
-    $modal.remove()
-  }
-
-  registerActions () {
-    this.baseElement.addEventListener('click', event => {
-      const $modal = event.target.closest('div') // maybe not reliable enough
-      const $button = event.target.closest('button')
-      if ($button.classList.contains('sc-modal__button')) {
-        event.preventDefault()
-        const action = $button.dataset.action
-
-        switch (action) {
-          case 'accept':
-            this.acceptValueAction($modal)
-            break
-          case 'decline':
-            this.declineValueAction($modal)
-            break
-          default:
-            break
-        }
-      }
-    })
   }
 
   render () {

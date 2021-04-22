@@ -7,20 +7,20 @@ export default class Mapper {
 
   initDictionary () {
     this.dictionary = {
-      country: 'countryName',
-      countryName: 'countryName',
-      affiliation: 'organizationName',
-      organisation: 'organizationName',
-      organization: 'organizationName',
-      organisationName: 'organizationName',
-      organizationName: 'organizationName',
-      institution: 'organizationName',
+      country: 'country_name',
+      countryName: 'country_name',
+      fullName: 'fn',
+      fullname: 'fn',
+      name: 'fn',
+      affiliation: 'organization_name',
+      organisation: 'organization_name',
+      organization: 'organization_name',
+      organisationName: 'organization_name',
+      organizationName: 'organization_name',
+      institution: 'organization_name',
       organizationTitle: 'role',
       position: 'role',
-      job: 'role',
-      fullName: 'name',
-      fullname: 'name',
-      name: 'name'
+      job: 'role'
     }
   }
 

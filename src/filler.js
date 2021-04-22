@@ -7,6 +7,16 @@ export default class Filler {
     this.data = params.data
   }
 
+  hasRenderedModal ($input) {
+    // An inputs nextSibling is its text
+    const nextSibling = $input.nextSibling.nextSibling
+    console.log(nextSibling)
+    if (nextSibling) {
+      return nextSibling.nodeName === 'DIV' && nextSibling.classList.contains('sa-modal')
+    }
+    return false
+  }
+
   fill () {
     this.tuples.forEach(tuple => {
       const $input = tuple.input
@@ -19,10 +29,12 @@ export default class Filler {
           currentInputValue !== '' &&
           currentInputValue !== value
         ) {
-          const changeInputModal = new ChangeInputModal(
-            { baseElement: this.baseElement, input: $input, value: value }
-          )
-          changeInputModal.render()
+          if (!this.hasRenderedModal($input)) {
+            const changeInputModal = new ChangeInputModal(
+              { baseElement: this.baseElement, input: $input, value: value }
+            )
+            changeInputModal.render()
+          }
         } else {
           $input.value = value
         }

@@ -41,6 +41,8 @@ export default class ChangeInputModal {
     const $modal = document.createElement('div')
     $modal.classList.add('sa-modal')
     $modal.innerHTML = this.template(this.value)
+    $modal.dataset.parentInput = this.input.id
+    $modal.dataset.suggestedValue = this.value
     this.input.parentNode.appendChild($modal)
   }
 

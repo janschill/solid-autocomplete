@@ -9,17 +9,29 @@ export default class SolidAutocomplete {
   constructor (params) {
     this.autocompleteButton = params.button
     this.form = params.form
+
     this.picker = new Picker({ form: this.form })
     const form = new Form({ baseElement: this.form })
     form.registerActions()
-        const fillData = await DataFetcher.fetchWebIdProfile(url)
 
-      // pick form
-      // find inputs to fill
-      // fetch data from pod
-      // map inputs to data
-      // fill in data to inputs
+    this.autocompleteButton.addEventListener('click', async event => {
+      const url = this.grabResourceUrl()
+      if (url) {
+        this.autocompleteButton.disabled = true
+        const fillData = await DataFetcher.fetchWebIdProfile(url)
+        this.autocompleteButton.disabled = false
+
+        const inputLabelTuples = this.picker.pick()
+        this.mapper = new Mapper({ inputLabelTuples })
+        const inputsAndPredicates = this.mapper.map()
+        this.filler = new Filler({ baseElement: this.form, tuples: inputsAndPredicates, data: fillData })
+        this.filler.fill()
+      }
     })
+  }
+
+  grabResourceUrl () {
+    return document.querySelector('#solid-resource-url').value
   }
 }
 

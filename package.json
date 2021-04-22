@@ -1,6 +1,6 @@
 {
   "name": "solid-autocomplete",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "This module allows an HTML form to be populated with data from your Solid pod.",
   "main": "dist/solid-autocomplete.js",
   "module": "dist/solid-autocomplete.js",

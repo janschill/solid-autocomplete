@@ -44,7 +44,8 @@ export default class SolidAutocomplete {
     return document.querySelector('#solid-resource-url').value
   }
 
-  createAutocompleteDomControls ($parent) {
+  createAutocompleteDomControls ($parent = null) {
+    if (!$parent) $parent = this.form
     const $container = document.createElement('div')
     $container.innerHTML = `
       <label for="solid-resource-url">Document to use for autofilling.</label>

@@ -1,4 +1,5 @@
 import './assets/css/styles.css'
+import Form from './components/form'
 import Filler from './filler'
 import Mapper from './mapper'
 import Picker from './picker'
@@ -8,6 +9,8 @@ export default class SolidAutocomplete {
     this.autocompleteButton = params.button
     this.form = params.form
     this.picker = new Picker({ form: this.form })
+    const form = new Form({ baseElement: this.form })
+    form.registerActions()
     this.autocompleteButton.addEventListener('click', async () => {
       const fillData = {
         name: 'Jan Schill',

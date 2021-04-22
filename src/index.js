@@ -4,9 +4,12 @@ import DataFetcher from './data-fetcher'
 import Filler from './filler'
 import Mapper from './mapper'
 import Picker from './picker'
+const packageJson = require('../package.json')
 
 export default class SolidAutocomplete {
   constructor (params) {
+    console.log(`SA: Version@${packageJson.version}`)
+
     if (params) {
       this.autocompleteButton = params.button
       this.form = params.form

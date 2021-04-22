@@ -1,5 +1,6 @@
 import './assets/css/styles.css'
 import Form from './components/form'
+import DataFetcher from './data-fetcher'
 import Filler from './filler'
 import Mapper from './mapper'
 import Picker from './picker'
@@ -11,20 +12,7 @@ export default class SolidAutocomplete {
     this.picker = new Picker({ form: this.form })
     const form = new Form({ baseElement: this.form })
     form.registerActions()
-    this.autocompleteButton.addEventListener('click', async () => {
-      const fillData = {
-        name: 'Jan Schill',
-        countryName: 'Denmark',
-        postalCode: '2300',
-        region: 'Copenhagen',
-        organizationName: 'IT University of Copenhagen',
-        role: 'Student'
-      }
-      const inputLabelTuples = this.picker.pick()
-      this.mapper = new Mapper({ inputLabelTuples })
-      const inputsAndPredicates = this.mapper.map()
-      this.filler = new Filler({ baseElement: this.form, tuples: inputsAndPredicates, data: fillData })
-      this.filler.fill()
+        const fillData = await DataFetcher.fetchWebIdProfile(url)
 
       // pick form
       // find inputs to fill

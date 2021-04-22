@@ -10,7 +10,6 @@ export default class Filler {
   hasRenderedModal ($input) {
     // An inputs nextSibling is its text
     const nextSibling = $input.nextSibling.nextSibling
-    console.log(nextSibling)
     if (nextSibling) {
       return nextSibling.nodeName === 'DIV' && nextSibling.classList.contains('sa-modal')
     }

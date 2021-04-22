@@ -48,9 +48,9 @@ export default class ChangeInputModal {
     return `
       <p class="sa-modal__text">${text}</p>
       <button class="sc-modal__button sc-modal__button--accept checkmark" data-action="accept">
-        <span class="checkmark_circle"></span>
-        <span class="checkmark_stem"></span>
-        <span class="checkmark_kick"></span>
+        <span class="checkmark__circle"></span>
+        <span class="checkmark__stem"></span>
+        <span class="checkmark__kick"></span>
       </button>
       <button class="sc-modal__button sc-modal__button--decline" data-action="decline">
         <span class="close">

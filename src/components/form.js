@@ -21,7 +21,7 @@ export default class Form {
       const $modal = event.target.closest('.sa-modal') // maybe not reliable enough
       if ($modal) {
         const $button = event.target.closest('button')
-        if ($button && $button.classList.contains('sc-modal__button')) {
+        if ($button && $button.classList.contains('sa-modal__button')) {
           event.preventDefault()
           const action = $button.dataset.action
 

@@ -2,14 +2,14 @@
   display: inline;
 }
 
-.sc-modal__button {
+.sa-modal__button {
   border: none;
   vertical-align: middle;
   background-color: transparent;
   cursor: pointer;
 }
 
-.sc-modal__button--accept {
+.sa-modal__button--accept {
   display: inline-block;
   width: 22px;
   height: 22px;
@@ -49,14 +49,14 @@
   top: 12px;
 }
 
-.sc-modal__button--decline {
+.sa-modal__button--decline {
   width: 22px;
   height: 22px;
   background-color: red;
   border-radius: 50%;
 }
 
-.sc-modal__button--decline:hover {
+.sa-modal__button--decline:hover {
   transition: all 250ms ease;
   background-color: rgb(163, 4, 4);
 }

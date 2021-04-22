@@ -50,13 +50,16 @@ export default class Mapper {
   }
 
   fromLabelText ($label) {
-    const textContent = $label.textContent
-    const textContentCamelCased = this.toCamelCase(textContent)
-    const hit = this.dictionary[textContentCamelCased]
-    if (hit) return hit
+    if ($label) {
+      const textContent = $label.textContent
+      const textContentCamelCased = this.toCamelCase(textContent)
+      const hit = this.dictionary[textContentCamelCased]
+      if (hit) return hit
 
-    const textContentSplit = textContent.split(' ')
-    return this.checkValuesInDictionary(textContentSplit)
+      const textContentSplit = textContent.split(' ')
+      return this.checkValuesInDictionary(textContentSplit)
+    }
+    return null
   }
 
   map () {

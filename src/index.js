@@ -11,14 +11,14 @@ export default class SolidAutocomplete {
     console.log(`SA: Version@${packageJson.version}`)
 
     if (params) {
-      this.autocompleteButton = params.button
-      this.form = params.form
+      if (params.button) this.autocompleteButton = params.button
+      if (params.form) this.form = params.form
     }
   }
 
   setupSolidAutocomplete () {
     if (!this.autocompleteButton) this.autocompleteButton = document.querySelector('.sc-autocomplete')
-    if (!this.form) this.form = document.querySelector('.form')
+    // if (!this.form) this.form = document.querySelector('.form')
 
     this.picker = new Picker({ form: this.form })
     const form = new Form({ baseElement: this.form })

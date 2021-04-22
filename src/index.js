@@ -7,8 +7,15 @@ import Picker from './picker'
 
 export default class SolidAutocomplete {
   constructor (params) {
-    this.autocompleteButton = params.button
-    this.form = params.form
+    if (params) {
+      this.autocompleteButton = params.button
+      this.form = params.form
+    }
+  }
+
+  setupSolidAutocomplete () {
+    if (!this.autocompleteButton) this.autocompleteButton = document.querySelector('.sc-autocomplete')
+    if (!this.form) this.form = document.querySelector('.form')
 
     this.picker = new Picker({ form: this.form })
     const form = new Form({ baseElement: this.form })
@@ -32,6 +39,16 @@ export default class SolidAutocomplete {
 
   grabResourceUrl () {
     return document.querySelector('#solid-resource-url').value
+  }
+
+  createAutocompleteDomControls ($parent) {
+    const $container = document.createElement('div')
+    $container.innerHTML = `
+      <label for="solid-resource-url">Document to use for autofilling.</label>
+      <input type="url" name="solid-resource-url" id="solid-resource-url" value="https://janschill.net/profile/card">
+      <button class="sc-autocomplete">Autocomplete</button>
+    `
+    $parent.insertBefore($container, $parent.firstChild)
   }
 }
 

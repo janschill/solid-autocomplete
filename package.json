@@ -21,7 +21,8 @@
   "license": "MIT",
   "dependencies": {
     "@inrupt/solid-client": "^1.5.0",
-    "@inrupt/vocab-common-rdf": "^0.7.2"
+    "@inrupt/vocab-common-rdf": "^0.7.2",
+    "buffer": "^6.0.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",

@@ -49,6 +49,11 @@ export default class Mapper {
     return this.checkValuesInDictionary(ids)
   }
 
+  fromNameAttribute ($input) {
+    const name = $input.name
+    return this.checkValuesInDictionary([name])
+  }
+
   fromLabelText ($label) {
     if ($label) {
       const textContent = $label.textContent.trim()
@@ -77,6 +82,12 @@ export default class Mapper {
       const fillKeyFromId = this.fromId($input)
       if (fillKeyFromId) {
         elements.push({ input: $input, predicate: fillKeyFromId })
+        return
+      }
+
+      const fillKeyFromNameAttribute = this.fromNameAttribute($input)
+      if (fillKeyFromNameAttribute) {
+        elements.push({ input: $input, predicate: fillKeyFromNameAttribute })
         return
       }
 

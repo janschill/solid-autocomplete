@@ -18,7 +18,6 @@ export default class SolidAutocomplete {
 
   setupSolidAutocomplete () {
     if (!this.autocompleteButton) this.autocompleteButton = document.querySelector('.sc-autocomplete')
-    // if (!this.form) this.form = document.querySelector('.form')
 
     this.picker = new Picker({ form: this.form })
     const form = new Form({ baseElement: this.form })

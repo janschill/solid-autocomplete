@@ -9,56 +9,80 @@
   cursor: pointer;
 }
 
+.sa-modal__button--decline,
 .sa-modal__button--accept {
   display: inline-block;
   width: 22px;
   height: 22px;
-  transform: rotate(45deg);
-}
-
-.checkmark__circle {
-  position: absolute;
-  width: 22px;
-  height: 22px;
-  background-color: rgb(0, 167, 0);
   border-radius: 11px;
-  left: 0;
-  top: 0;
+  position: relative;
 }
 
-.checkmark:hover .checkmark__circle {
+.sa-modal__button--accept {
+  background-color: rgb(0, 167, 0);
+}
+
+.sa-modal__button--accept:hover {
   transition: all 250ms ease;
   background-color: rgb(0, 122, 0);
 }
 
-.checkmark__stem {
+.sa-modal__button--accept::before,
+.sa-modal__button--accept::after {
+  content: '';
+  background-color: white;
   position: absolute;
-  width: 3px;
-  height: 9px;
-  background-color: #fff;
-  left: 11px;
-  top: 6px;
+  width: 2px;
 }
 
-.checkmark__kick {
-  position: absolute;
-  width: 3px;
-  height: 3px;
-  background-color: #fff;
-  left: 8px;
-  top: 12px;
+.sa-modal__button--accept::before {
+  left: 12px;
+  top: 7px;
+  height: 8px;
 }
+
+.sa-modal__button--accept::after {
+  left: 8px;
+  height: 5px;
+  top: 9px;
+}
+
+.sa-modal__button--decline::before,
+.sa-modal__button--decline::after {
+  content: '';
+  background-color: white;
+  position: absolute;
+  top: 6px;
+  left: 10px;
+  height: 10px;
+  width: 2px;
+}
+
+.sa-modal__button--decline {
+  background-color: red;
+}
+
+.sa-modal__button--decline:hover {
+  transition: all 250ms ease;
+  background-color: rgb(163, 4, 4);
+}
+
+.sa-modal__button--decline::before,
+.sa-modal__button--accept::before {
+  transform: rotate(45deg);
+}
+
+.sa-modal__button--decline::after,
+.sa-modal__button--accept::after {
+  transform: rotate(-45deg);
+}
+
 
 .sa-modal__button--decline {
   width: 22px;
   height: 22px;
   background-color: red;
   border-radius: 50%;
-}
-
-.sa-modal__button--decline:hover {
-  transition: all 250ms ease;
-  background-color: rgb(163, 4, 4);
 }
 
 .close {

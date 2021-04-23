@@ -17,16 +17,8 @@ export default class ChangeInputModal {
   template (text) {
     return `
       <p class="sa-modal__text">${text}</p>
-      <button class="sa-modal__button sa-modal__button--accept checkmark" data-action="accept">
-        <span class="checkmark__circle"></span>
-        <span class="checkmark__stem"></span>
-        <span class="checkmark__kick"></span>
-      </button>
-      <button class="sa-modal__button sa-modal__button--decline" data-action="decline">
-        <span class="close">
-          <span class="close__inner"></span>
-        </span>
-      </button>
+      <button class="sa-modal__button sa-modal__button--accept" data-action="accept"></button>
+      <button class="sa-modal__button sa-modal__button--decline" data-action="decline"></button>
     `
   }
 }

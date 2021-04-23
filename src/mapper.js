@@ -51,7 +51,7 @@ export default class Mapper {
 
   fromLabelText ($label) {
     if ($label) {
-      const textContent = $label.textContent
+      const textContent = $label.textContent.trim()
       const textContentCamelCased = this.toCamelCase(textContent)
       const hit = this.dictionary[textContentCamelCased]
       if (hit) return hit

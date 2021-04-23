@@ -1,14 +1,21 @@
 export default class Mapper {
   constructor (params) {
     this.inputLabelTuples = params.inputLabelTuples
-    this.fillData = params.fillData
+    this.data = params.data
     this.initDictionary()
   }
 
   initDictionary () {
+    // The keys are getting camel-cased before
     this.dictionary = {
       country: 'country_name',
       countryName: 'country_name',
+      firstName: 'first_name',
+      fName: 'first_name',
+      givenName: 'first_name',
+      lastName: 'last_name',
+      lName: 'last_name',
+      familyName: 'last_name',
       fullName: 'fn',
       fullname: 'fn',
       name: 'fn',

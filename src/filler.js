@@ -7,6 +7,20 @@ export default class Filler {
     this.data = params.data
   }
 
+  // Naive approach to handling names
+  // Refactor to mapper, or different class
+  // Hardcoded 'fn', 'first_name', 'last_name' is also not ideal
+  handleName (predicate) {
+    switch (predicate) {
+      case 'first_name':
+        return this.data.fn.split(' ')[0]
+      case 'last_name':
+        return this.data.fn.split(' ')[1]
+      default:
+        return null
+    }
+  }
+
   hasRenderedModal ($input) {
     // An inputs nextSibling is its text
     const nextSibling = $input.nextSibling.nextSibling
@@ -20,7 +34,7 @@ export default class Filler {
     this.tuples.forEach(tuple => {
       const $input = tuple.input
       const predicate = tuple.predicate
-      const value = this.data[predicate]
+      const value = this.handleName(predicate) || this.data[predicate]
       if (value) {
         const currentInputValue = $input.value
         if (

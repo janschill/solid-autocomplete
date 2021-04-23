@@ -11,7 +11,7 @@ export default class ChangeInputModal {
     $modal.innerHTML = this.template(this.value)
     $modal.dataset.parentInput = this.input.id
     $modal.dataset.suggestedValue = this.value
-    this.input.parentNode.appendChild($modal)
+    this.input.parentNode.insertBefore($modal, this.input.nextSibling)
   }
 
   template (text) {

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="solid-autocomplete.js"></script>
+  <title>Solid Autocomplete</title>
+</head>
+<body>
+  <form class="form" action="/" method="get">
+    <fieldset>
+      <label for="fname">First name</label>
+      <input type="text" name="fname" id="fname" autocomplete="section-red given-name">
+      <label for="lname">Last name</label>
+      <input type="text" name="lname" id="lname" autocomplete="section-red family-name">
+      <label for="email-address">Email address</label>
+      <input type="email" name="emailAddress" id="email-address">
+    </fieldset>
+    <fieldset>
+      <label for="street-address">Address</label>
+      <textarea id="street-address" name=ra autocomplete="street-address"></textarea>
+      <label for="city">City</label>
+      <input id="city" name=rc autocomplete="address-level2">
+      <label for="postal-code">Postal Code</label>
+      <input id="postal-code" name=rp autocomplete="postal-code">
+      <label for="regional-area">Region</label>
+      <input type="text" id="regional-area">
+      <label for="country-name">Country name</label>
+      <input type="text" name="country" id="country-name">
+     </fieldset>
+    <fieldset>
+      <label for="organization">Organization</label>
+      <input type="text" name="organization" id="organization">
+      <label for="organization-title">Organization title</label>
+      <input type="text" name="organization-title" id="organization-title">
+    </fieldset>
+  </form>
+</body>
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    const $form = document.querySelector('.form')
+    const $body = document.querySelector('body')
+    const solidAutocomplete = new SolidAutocomplete()
+    // const solidAutocomplete = new SolidAutocomplete({ form: $form })
+    solidAutocomplete.createAutocompleteDomControls($body)
+    solidAutocomplete.setupSolidAutocomplete()
+  })
+</script>
+</html>

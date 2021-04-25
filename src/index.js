@@ -52,7 +52,7 @@ export default class SolidAutocomplete {
       <label for="solid-resource-url">Document to use for autofilling.</label>
       <input type="url" name="solid-resource-url" id="solid-resource-url" placeholder="https://janschill.net/profile/card#me">
       <button class="sc-solid-button sc-autocomplete" id="sc-autocomplete">
-        <img class="sc-solid-button__image" src="solid-logo.svg" alt="The Solid Project logo.">
+        <img class="sc-solid-button__image" src="/images/solid-logo.svg" alt="The Solid Project logo.">
         <span class="sc-solid-button__text">Autocomplete</span>
       </button>
     `

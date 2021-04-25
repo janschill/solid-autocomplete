@@ -1,5 +1,6 @@
-import { getSolidDataset, getStringNoLocale, getThing, getUrl } from '@inrupt/solid-client'
+import { getSolidDataset, getStringNoLocale, getThing, getUrl, getUrlAll } from '@inrupt/solid-client'
 import { VCARD } from '@inrupt/vocab-common-rdf'
+import { stripMailtoTag } from './util/email-address'
 
 export default class DataFetcher {
   static webId (url) {
@@ -22,28 +23,60 @@ export default class DataFetcher {
     data[VCARD.role.value] = getStringNoLocale(profile, VCARD.role)
     data[VCARD.tel.value] = getStringNoLocale(profile, VCARD.tel)
     data[VCARD.organization_name.value] = getStringNoLocale(profile, VCARD.organization_name)
-    console.log(data)
-    return data
-    // return {
-    // bday: getStringNoLocale(profile, VCARD.bday),
-    // email: getStringNoLocale(profile, VCARD.email),
-    // region: getStringNoLocale(profile, VCARD.region),
-    // country_name: getStringNoLocale(profile, VCARD.country_name),
-    // postal_code: getStringNoLocale(profile, VCARD.postal_code),
-    // street_address: getStringNoLocale(profile, VCARD.street_address),
-    // }
+    const emailAddress = this.handleEmail(dataset, profile)
+    const address = this.handleAddress(dataset, profile)
+
+    return {
+      ...data,
+      ...address,
+      ...emailAddress
+    }
   }
 
-  static flattenThing (dataset, thingUrl) {
+  static flattenThing (dataset, thingUrl, objectGetter) {
     const thing = getThing(dataset, thingUrl)
-    const a = {}
+    const flattened = {}
 
     for (const quad of thing._quads) {
+      // a quad is stored in a Map with (key, value)
       const predicate = quad[1].predicate.id
-      const object = quad[1].object.id
-      a[predicate] = object
+      const object = objectGetter(thing, predicate)
+      flattened[predicate] = object
     }
 
-    // console.log(a)
+    return flattened
+  }
+
+  static handleAddress (dataset, profile) {
+    // country-name, locality, postal-code, region, street address
+    // those objects are all strings, therefore it can be naively parsed
+    const addresses = []
+    const hasAddressUrls = getUrlAll(profile, VCARD.hasAddress)
+
+    for (const hasAddressUrl of hasAddressUrls) {
+      addresses.push(this.flattenThing(dataset, hasAddressUrl, getStringNoLocale))
+    }
+
+    // we are only interested in the first address
+    return addresses[0] || {}
+  }
+
+  static handleEmail (dataset, profile) {
+    const emailAddresses = []
+    const hasEmailAddressUrls = getUrlAll(profile, VCARD.hasEmail)
+    const email = {}
+
+    for (const hasEmailAddressUrl of hasEmailAddressUrls) {
+      const emailThing = getThing(dataset, hasEmailAddressUrl)
+      const emailValue = getUrl(emailThing, VCARD.value)
+
+      emailAddresses.push(stripMailtoTag(emailValue))
+    }
+
+    if (emailAddresses[0]) {
+      email[VCARD.email.value] = emailAddresses[0]
+    }
+
+    return email
   }
 }

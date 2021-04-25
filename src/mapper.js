@@ -18,7 +18,7 @@ export default class Mapper {
       const vl = this.toCamelCase(value)
       return dictionary[vl]
     })
-    return this.dictionary[key]
+    return dictionary[this.toCamelCase(key)]
   }
 
   fromAutocompleteAttribute ($input) {

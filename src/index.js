@@ -23,6 +23,7 @@ export default class SolidAutocomplete {
     form.registerActions()
 
     this.autocompleteButton.addEventListener('click', async event => {
+      event.preventDefault()
       const url = this.grabResourceUrl()
       if (url) {
         this.autocompleteButton.disabled = true

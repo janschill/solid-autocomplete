@@ -2,13 +2,21 @@ import { getSolidDataset, getStringNoLocale, getThing, getUrl } from '@inrupt/so
 import { VCARD } from '@inrupt/vocab-common-rdf'
 
 export default class DataFetcher {
+  static webId (url) {
+    const webId = url.split('#')
+
+    // If it could not split on '#', it can be concluded
+    // that the WebIdProfileUrl was given
+    // The default/common identifier is #me
+    if (webId.length === 1) {
+      return { webIdUrl: `${webId[0]}#me`, webIdProfileUrl: webId[0] }
+    }
+    return { webIdUrl: `${webId[0]}#${webId[1]}`, webIdProfileUrl: webId[0] }
+  }
+
   static async fetchWebIdProfile (cardUrl) {
-    const dataset = await getSolidDataset(cardUrl)
-    const profile = getThing(dataset, `${cardUrl}#me`)
-    const address = (getThing(dataset, getUrl(profile, VCARD.hasAddress)))
-    // console.log(address)
-    this.flattenThing(dataset, getUrl(profile, VCARD.hasAddress))
-    // const region = getStringNoLocale(address, VCARD.region)
+    const dataset = await getSolidDataset(this.webId(cardUrl).webIdProfileUrl)
+    const profile = getThing(dataset, this.webId(cardUrl).webIdUrl)
     const data = {}
     data[VCARD.fn.value] = getStringNoLocale(profile, VCARD.fn)
     data[VCARD.role.value] = getStringNoLocale(profile, VCARD.role)

@@ -39,6 +39,12 @@ The value or `textContent` of a label describes what the user should provide in 
 
 The dictionary is a simple key value store that maps possible entries for the above mentioned attributes against the VCARD vocabulary.
 
+## Preview
+
+An example form showing conflicting data.
+
+![](./assets/example.png)
+
 ## What Fields Can Be Detected?
 
 Only fields that can be *autocompleted* by the browser are:

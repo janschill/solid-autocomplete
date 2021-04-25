@@ -31,10 +31,10 @@ solidAutocomplete.setupSolidAutocomplete()
 
 ### Indico
 
-1. Install solid-comment in Indico
+1. Install solid-autocomplete in Indico
 
 ```bash
-npm i solid-comment
+npm i solid-autocomplete
 ```
 
 2. Configure MutationObserver and Solid Autocomplete

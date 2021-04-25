@@ -1,38 +1,9 @@
-import { VCARD } from '@inrupt/vocab-common-rdf'
+import { dictionary } from './dictionary'
 
 export default class Mapper {
   constructor (params) {
     this.inputLabelTuples = params.inputLabelTuples
     this.data = params.data
-    this.initDictionary()
-  }
-
-  initDictionary () {
-    // The keys are getting camel-cased before
-    // The keys are the fields we can detect from inputs
-    // The values are the predicates used by @inrupt/vocab-common-rdf
-    this.dictionary = {
-      country: VCARD.country_name.value,
-      countryName: VCARD.country_name.value,
-      firstName: 'first_name',
-      fName: 'first_name',
-      givenName: 'first_name',
-      lastName: 'last_name',
-      lName: 'last_name',
-      familyName: 'last_name',
-      fullName: VCARD.fn.value,
-      fullname: VCARD.fn.value,
-      name: VCARD.fn.value,
-      affiliation: VCARD.organization_name.value,
-      organisation: VCARD.organization_name.value,
-      organization: VCARD.organization_name.value,
-      organisationName: VCARD.organization_name.value,
-      organizationName: VCARD.organization_name.value,
-      institution: VCARD.organization_name.value,
-      organizationTitle: VCARD.role.value,
-      position: VCARD.role.value,
-      job: VCARD.role.value
-    }
   }
 
   toCamelCase (word) {
@@ -45,7 +16,7 @@ export default class Mapper {
   checkValuesInDictionary (values) {
     const key = values.find(value => {
       const vl = this.toCamelCase(value)
-      return this.dictionary[vl]
+      return dictionary[vl]
     })
     return this.dictionary[key]
   }
@@ -69,7 +40,7 @@ export default class Mapper {
     if ($label) {
       const textContent = $label.textContent.trim()
       const textContentCamelCased = this.toCamelCase(textContent)
-      const hit = this.dictionary[textContentCamelCased]
+      const hit = dictionary[textContentCamelCased]
       if (hit) return hit
 
       const textContentSplit = textContent.split(' ')

@@ -2,6 +2,86 @@
 
 This module allows an HTML form to be populated with data from your Solid pod. As of now only data from a WebId profile document is supported. This is also part of a proof of concept programming, which aims at working with an existing software system called [Inidico](https://github.com/indico/indico).
 
+## Usage
+
+1. Install Solid Autcomplete
+
+```bash
+npm i solid-autocomplete
+```
+
+2. Import the library into your project
+
+```js
+// const SolidAutocomplete = require("solid-autocomplete")
+import SolidAutocomplete from "solid-autocomplete"
+```
+
+3. Configuration
+
+* `form`: A form where it shall fill in the inputs. If this is not given it will naively grab the first it finds.
+* `button`: A button can be passed in that when pressed will trigger the autocomplete functionality.
+* `createAutocompleteDomControls()`: Helper method can create the button and input field for the WebId URL can be automatically generated
+
+```js
+const solidAutocomplete = new SolidAutocomplete({ form, button })
+// solidAutocomplete.createAutocompleteDomControls()
+solidAutocomplete.setupSolidAutocomplete()
+```
+
+### Indico
+
+1. Install solid-comment in Indico
+
+```bash
+npm i solid-comment
+```
+
+2. Configure MutationObserver and Solid Autocomplete
+
+TODO: Explain
+
+```js
+// indico/modules/events/registration/client/js/solid.js
+import SolidAutocomplete from 'solid-autocomplete';
+
+function observeFormCreation() {
+  const formId = 'registrationForm';
+  const $conferencePage = document.querySelector('.conference-page');
+  const targetNode = $conferencePage;
+  const config = {attributes: false, childList: true, subtree: true};
+
+  const callback = (mutationsList, observer) => {
+    for (const mutation of mutationsList) {
+      if (mutation.type === 'childList') {
+        for (const node of mutation.addedNodes) {
+          if (node.id === formId) {
+            observer.disconnect();
+            const solidAutocomplete = new SolidAutocomplete({form: node});
+            solidAutocomplete.createAutocompleteDomControls(node);
+            solidAutocomplete.setupSolidAutocomplete();
+          }
+        }
+      }
+    }
+  };
+
+  const observer = new MutationObserver(callback);
+  observer.observe(targetNode, config);
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  observeFormCreation();
+});
+```
+
+3. Import script in event registration index
+
+```js
+// indico/modules/events/registration/client/js/index.js
+import './solid'
+```
+
 ## How Does the Library Work?
 
 An input field is generated which will be used to fetch the WebId profile document. It also requires a base element, ideally the form with the input fields is given here. It then grabs all `<input>` and `textarea>` fields.

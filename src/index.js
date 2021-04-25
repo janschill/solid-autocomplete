@@ -10,10 +10,8 @@ export default class SolidAutocomplete {
   constructor (params) {
     console.log(`SA: Version@${packageJson.version}`)
 
-    if (params) {
-      if (params.button) this.autocompleteButton = params.button
-      if (params.form) this.form = params.form
-    }
+    this.form = (params && params.form) ? params.form : document.querySelector('form')
+    if (params && params.button) this.button = params.button
   }
 
   setupSolidAutocomplete () {

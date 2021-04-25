@@ -5,7 +5,7 @@ export default class Picker {
 
   pick () {
     const inputLabelTuples = []
-    const inputs = this.baseElement.querySelectorAll('input')
+    const inputs = this.baseElement.querySelectorAll('input, textarea')
 
     for (let i = 0; i < inputs.length; i++) {
       const $input = inputs[i]

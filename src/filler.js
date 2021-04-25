@@ -1,3 +1,4 @@
+import { VCARD } from '@inrupt/vocab-common-rdf'
 import ChangeInputModal from './components/change-input-modal'
 
 export default class Filler {
@@ -13,9 +14,9 @@ export default class Filler {
   handleName (predicate) {
     switch (predicate) {
       case 'first_name':
-        return this.data.fn.split(' ')[0]
+        return this.data[VCARD.fn.value].split(' ')[0]
       case 'last_name':
-        return this.data.fn.split(' ')[1]
+        return this.data[VCARD.fn.value].split(' ')[1]
       default:
         return null
     }

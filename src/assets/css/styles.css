@@ -1,3 +1,8 @@
+:root {
+  --sc-solid-color: #7c4dff;
+  --sc-neutral-bright-color: #dfdfdf;
+}
+
 .sa-modal__text {
   display: inline;
 }
@@ -104,4 +109,42 @@
   z-index: 2;
   margin-bottom: 5px;
   display: inline-block;
+}
+
+.sc-solid-button {
+  appearance: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1rem;
+  line-height: 1.5;
+  background-color: var(--sc-solid-color);
+  color: white;
+  transition: color 0.25s ease-out;
+  margin: 0;
+  padding: 4px 10px 4px;
+  user-select: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  outline: none;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid var(--sc-neutral-bright-color);
+  border-radius: 3px;
+  position: relative;
+}
+
+.sc-solid-button__image {
+  height: 20px;
+  margin-right: 10px;
+}
+
+.sc-solid-button:disabled::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(210, 210, 210, 0.5);
 }

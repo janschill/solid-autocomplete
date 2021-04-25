@@ -49,7 +49,7 @@ export default class SolidAutocomplete {
     const $container = document.createElement('div')
     $container.innerHTML = `
       <label for="solid-resource-url">Document to use for autofilling.</label>
-      <input type="url" name="solid-resource-url" id="solid-resource-url" value="https://janschill.net/profile/card#me">
+      <input type="url" name="solid-resource-url" id="solid-resource-url" placeholder="https://janschill.net/profile/card#me">
       <button class="sc-autocomplete">Autocomplete</button>
     `
     $parent.insertBefore($container, $parent.firstChild)

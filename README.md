@@ -1,6 +1,6 @@
 # solid-autocomplete
 
-This module allows an HTML form to be populated with data from your Solid pod. As of now only data from a WebId profile document is supported. This is also part of a proof of concept programming, which aims at working with an existing software system called [Inidico](https://github.com/indico/indico).
+This module allows an HTML form to be populated with data from your Solid pod. As of now only data from a WebId profile document is supported. This is also part of a proof of concept programming, which aims at working with an existing software system called [Indico](https://github.com/indico/indico).
 
 ## Usage
 

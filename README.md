@@ -2,6 +2,33 @@
 
 This module allows an HTML form to be populated with data from your Solid pod. As of now only data from a WebId profile document is supported. This is also part of a proof of concept programming, which aims at working with an existing software system called [Indico](https://github.com/indico/indico).
 
+## Development
+
+1. Clone the repository
+
+```bash
+$ git clone git@github.com:janschill/solid-autocomplete.git
+$ cd solid-autocomplete
+```
+
+2. Install dependencies
+
+```bash
+$ npm ci
+```
+
+3. Run webpack development server
+
+```bash
+$ npm start
+```
+
+4. Copy `index.html` into `dist/` directory
+
+```bash
+$ cp src/index.html dist/index.html
+```
+
 ## Usage
 
 1. Install Solid Autcomplete

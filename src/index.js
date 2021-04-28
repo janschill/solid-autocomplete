@@ -14,7 +14,7 @@ export default class SolidAutocomplete {
     if (params && params.button) this.button = params.button
   }
 
-  setupSolidAutocomplete () {
+  setupSolidAutocomplete (callback) {
     if (!this.autocompleteButton) this.autocompleteButton = document.querySelector('#sc-autocomplete')
     if (!this.autocompleteButton) this.autocompleteButton = this.createAutocompleteDomControls(this.form)
 
@@ -35,6 +35,8 @@ export default class SolidAutocomplete {
         const inputsAndPredicates = this.mapper.map()
         this.filler = new Filler({ baseElement: this.form, tuples: inputsAndPredicates, data: fillData })
         this.filler.fill()
+
+        if (callback) callback(inputLabelTuples.map(tp => tp.input))
       }
     })
   }

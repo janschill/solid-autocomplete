@@ -1,6 +1,7 @@
 import { VCARD } from '@inrupt/vocab-common-rdf'
 
 const address = {
+  address: 'full_address',
   country: VCARD.country_name.value,
   countryName: VCARD.country_name.value,
   region: VCARD.region.value,

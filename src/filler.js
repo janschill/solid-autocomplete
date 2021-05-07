@@ -9,10 +9,17 @@ export default class Filler {
   }
 
   handleAddress () {
-    return `${this.data[VCARD.street_address.value]}\n` +
-      `${this.data[VCARD.postal_code.value]} ${this.data[VCARD.locality.value]}\n` +
-      `${this.data[VCARD.region.value]}\n` +
-      `${this.data[VCARD.country_name.value]}`
+    let address = ''
+    if (this.data[VCARD.street_address.value]) {
+      address += `${this.data[VCARD.street_address.value]}\n`
+    }
+    if (this.data[VCARD.postal_code.value] && this.data[VCARD.locality.value]) {
+      address += `${this.data[VCARD.postal_code.value]} ${this.data[VCARD.locality.value]}\n`
+    }
+    if (this.data[VCARD.region.value]) address += `${this.data[VCARD.region.value]}\n`
+    if (this.data[VCARD.country_name.value]) address += `${this.data[VCARD.country_name.value]}`
+
+    return address === '' ? null : address
   }
 
   handleName (index) {
